@@ -24,7 +24,7 @@ from .placement import place_drones
 __all__ = ("construct", "dependencies")
 
 
-class VirtualUAVProviderExtension(UAVExtension[VirtualUAVDriver]):
+class XSimExtension(UAVExtension[VirtualUAVDriver]):
     """Extension that creates one or more virtual UAVs in the server."""
 
     _driver: VirtualUAVDriver
@@ -217,7 +217,7 @@ class VirtualUAVProviderExtension(UAVExtension[VirtualUAVDriver]):
             uav.set_led_color(color)
 
 
-construct = VirtualUAVProviderExtension
+construct = XSimExtension
 dependencies = ("signals",)
-description = "Simulated, non-realistic UAVs for testing or demonstration purposes"
-enhancers = {"firmware_update": VirtualUAVProviderExtension.use_firmware_update_support}
+description = "Simulated UAVs with experimental, realistic drone behavior, designed for testing and demonstration purposes"
+enhancers = {"firmware_update": XSimExtension.use_firmware_update_support}
